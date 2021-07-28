@@ -7,14 +7,14 @@
     <title>OOPs Todo App</title>
 </head>
 <body>
-    <section>
-        <h1>Add Items</h1>
-        <div>
-            <input type="text" placeholder="add task" id="todoInp"/>
-            <button id="todoBtn">Add</button>
-        </div>
-        <ul id="showTodo"></ul>
-    </section>
+    <div id="app1"></div>
+    <div id="app2"></div>
+
     <script src="./app.js"></script>
+
+    <script>
+        new TodoApp(document.getElementById('app1'))
+        new TodoApp(document.getElementById('app2'))
+    </script>
 </body>
 </html>

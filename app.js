@@ -21,30 +21,70 @@ class TodoApp{
    deleteTodo(element) {delete todo element}
 } */
 
-class TodoApp {
-    constructor(){
-        const button = document.getElementById('todoBtn')
-        button.addEventListener('click', () => { this.render() })
+// class TodoApp {
+//     constructor(){
+//         const button = document.getElementById('todoBtn')
+//         button.addEventListener('click', () => { this.render() })
         
+//     }
+
+//     render(){
+//         const ul = document.getElementById('showTodo')
+//         const input = document.getElementById('todoInp')
+//         let li = this.createItem()
+//         li.innerText = input.value
+//         console.log(input.value);
+//         ul.appendChild(li)
+//         input.value = ""
+//     }
+
+//     addTodo() {
+        
+//     }
+
+//     createItem() {
+//         let li = document.createElement('li')
+//         li.id = 'listItem'
+//         return li
+//     }
+// }
+
+
+
+class TodoApp{
+    constructor(el){
+        this.rootElement = el
+        this.render()
     }
 
-    render(){
-        const ul = document.getElementById('showTodo')
-        const input = document.getElementById('todoInp')
-        let li = this.createItem()
+    render(){ 
+        this.rootElement.innerHTML = `<input type="text" placeholder="add task"/>
+        <button>Add</button>
+        <ul></ul>`
+
+        const addButton = this.rootElement.querySelector("button")
+        addButton.addEventListener('click', () => {
+            this.addTodo()
+        })
+    }
+
+    addTodo() { 
+        const input = this.rootElement.querySelector("input")
+        const ul = this.rootElement.querySelector("ul")
+        let li = document.createElement('li')
         li.innerText = input.value
+        li.style.cursor= "pointer"
         console.log(input.value);
         ul.appendChild(li)
         input.value = ""
+        this.deleteTodo(li)
+        //add new list element with input.value into the this.rootElement.querySelector("ul") element
     }
 
-    addTodo() {
+    deleteTodo(element) {
+        element.addEventListener('click', () => {
+            element.remove()
+        })
         
-    }
-
-    createItem() {
-        let li = document.createElement('li')
-        li.id = 'listItem'
-        return li
     }
 }
