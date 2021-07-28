@@ -24,10 +24,10 @@ class TodoApp{
         console.log(input.value);
         ul.appendChild(li)
         input.value = ""
-        this.deleteTodo(li)
+        this.addDeleteListener(li)
     }
 
-    deleteTodo(element) {
+    addDeleteListener(element) {
         element.addEventListener('click', () => {
             element.remove()
         })
